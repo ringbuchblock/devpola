@@ -43,6 +43,7 @@ $ mkdir -p devpola
 $ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola-config.sh
 $ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola-main.sh
 $ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola-upload.sh
+$ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola.jpg
 $ chown pi:pi devpola/
 $ chmod 600 devpola/
 ```
@@ -128,11 +129,15 @@ We want to run our scripts as background services. The following explains the ne
 
 1. Copy the systemd [units](systemd-units) to ```/etc/systemd/system```
 ```
-$ sudo cd /etc/systemd/system
-$ sudo wget https://github.com/ringbuchblock/devpola/raw/master/systemd-units/devpola.service
-$ sudo wget https://github.com/ringbuchblock/devpola/raw/master/systemd-units/devpola-upload.service
+$ cd
+$ wget https://github.com/ringbuchblock/devpola/raw/master/systemd-units/devpola.service
+$ wget https://github.com/ringbuchblock/devpola/raw/master/systemd-units/devpola-upload.service
+$ chmod 755 devpola.service devpola-upload.service
+$ sudo chown root:root devpola.service devpola-upload.service
+$ sudo mv devpola.service devpola-upload.service /etc/systemd/system
 ```
 2. Start and enable main /dev/pola daemon 
 ```
 $ sudo systemctl start devpola
-$ sudo systemctl enable devpola```
+$ sudo systemctl enable devpola
+```
