@@ -1,0 +1,10 @@
+[Unit]
+Description=devpola (main)
+Wants=devpola-upload.service
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /home/pi/devpola/devpola-main.sh
+
+[Install]
+WantedBy=multi-user.target
