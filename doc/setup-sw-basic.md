@@ -1,6 +1,6 @@
 # Basic Raspberry Pi Setup
 
-Download the [latest raspian image](https://www.raspberrypi.org/downloads/raspbian/) and write it to the SD card.
+Download the [latest raspian image](https://www.raspberrypi.org/downloads/raspbian/) (no desktop needed) and write it to the SD card.
 
 Next, we need to make some general configurations using the [Raspberry Pi configuration tool](https://www.raspberrypi.org/documentation/configuration/raspi-config.md).
 ```bash
