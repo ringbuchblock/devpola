@@ -69,3 +69,5 @@ echo -e "This is a test.\\n\\n\\n" > /dev/serial0
 ```
 
 Interested in more? There's a nice [Adafruit tutorial](https://learn.adafruit.com/networked-thermal-printer-using-cups-and-raspberry-pi?view=all).
+
+[>> Next Step: Deploying /dev/pola](/doc/setup-sw-devpola.md)
