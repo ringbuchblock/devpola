@@ -19,3 +19,6 @@
 * Case
   * You can use a cardboard box or eg Thomas Kremser's [wooden laser cut one](https://cdn.hackaday.io/files/18464789963776/Case3.0.eps)
 * a lot of cables
+
+
+[>> Next Step: Hardware Assembly](/doc/setup-hw.md)
