@@ -1,7 +1,7 @@
 # Setup /dev/pola Services
 
 
-## Setup Welcome Screen (optional)
+## (Optional) Setup Welcome Screen
 
 If you'd like you can show an ASCII art on the display after startup. Just extend ```/etc/issue``` with the contents of [this](devpola-welcome.txt) and with ```\d``` if you also like to see the current date.
 
@@ -40,12 +40,11 @@ Copy the /dev/pola [scripts](/scripts) (inclusive the image) to ```/home/pi/devp
 ```bash
 $ cd
 $ mkdir -p devpola
+$ cd devpola
 $ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola-config.sh
 $ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola-main.sh
 $ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola-upload.sh
 $ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola.jpg
-$ chown pi:pi devpola/
-$ chmod 600 devpola/
 ```
 
 
@@ -78,7 +77,7 @@ Each photo is printed along with a caption which is also configurable via ```PHO
 
 
 
-### Automatic Image Upload (script devpola-upload.sh)
+### (Optional) Automatic Image Upload (script devpola-upload.sh)
 
 /dev/pola offers an additional service for automatically uploading all the photos to a pre-defined web server via SSH. If you want to use this you first need to setup some things.
 
