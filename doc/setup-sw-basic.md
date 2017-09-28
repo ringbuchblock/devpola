@@ -56,7 +56,7 @@ sudo ./install
 Add printer to the CUPS system and set it as default:
 ```bash
 # <BAUDRATE> needs to be replaced by actual printer's baud rate
-sudo lpadmin -p ZJ-58 -E -v serial:/dev/ttyAMA0?baud=<BAUDRATE> -m zjiang/ZJ-58.ppd
+sudo lpadmin -p ZJ-58 -E -v serial:/dev/serial0?baud=<BAUDRATE> -m zjiang/ZJ-58.ppd
 sudo lpoptions -d ZJ-58
 ```
 
@@ -64,8 +64,8 @@ Optionally test the printer:
 1. ensure that the printer is properly connected (see Hardware section)
 2. send a sample text to the printer
 ```
-stty -F /dev/AMA0 <BAUDRATE>
-echo -e "This is a test.\\n\\n\\n" > /dev/AMA0
+stty -F /dev/serial0 <BAUDRATE>
+echo -e "This is a test.\\n\\n\\n" > /dev/serial0
 ```
 
 Interested in more? There's a nice [Adafruit tutorial](https://learn.adafruit.com/networked-thermal-printer-using-cups-and-raspberry-pi?view=all).
