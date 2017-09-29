@@ -1,3 +1,5 @@
+[<< Previous Step: Parts](/doc/parts.md)  
+
 ### Hardware Assembly
 
 #### Camera
@@ -24,4 +26,5 @@ The printer's yellow cable (RX) is connected to the Raspberry Pi's TX (GPIO 14).
 
 Further information about the GPIO pinout can be directly found at the [raspberry pi website](https://www.raspberrypi.org/documentation/usage/gpio/).
 
+                           
 [>> Next Step: Raspberry Pi Basic Setup](/doc/setup-sw-basic.md)
