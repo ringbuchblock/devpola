@@ -1,3 +1,5 @@
+[<< Previous Step: Raspberry Pi Basic Setup](/doc/setup-sw-basic.md)
+
 # Setup /dev/pola Services
 
 
