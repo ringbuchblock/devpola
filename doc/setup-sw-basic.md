@@ -1,3 +1,5 @@
+[<< Previous Step: Hardware Assembly](/doc/setup-hw.md)
+
 # Basic Raspberry Pi Setup
 
 Download the [latest raspian image](https://www.raspberrypi.org/downloads/raspbian/) (no desktop needed) and write it to the SD card.
