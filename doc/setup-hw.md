@@ -1,13 +1,13 @@
 [<< Previous Step: Parts](/doc/parts.md)  
 
-### Hardware Assembly
+# Hardware Assembly
 
-#### Camera
+## Camera
 
 You can find details on how to properly connect the camera to the Raspberry Pi directly on the [Raspberry Pi website](https://www.raspberrypi.org/documentation/usage/camera/README.md).
 
 
-#### Schematic
+## Schematic
 
 There are various options on how to wire all the parts - I'll show you one of it. Please take a look at the schematic below.
 
@@ -19,6 +19,8 @@ The printer's yellow cable (RX) is connected to the Raspberry Pi's TX (GPIO 14).
 
 
 ![/dev/pola schematic](/schematic/devpola-schematic.jpg)
+
+**Wiring of Kuman 3.5" HDMI MPI3508 Display**
 
 ![Kuman display](/schematic/kuman_mpi3508.jpg)
 
