@@ -15,6 +15,7 @@ As I did not only want to take pictures and print them but also provide them in 
 
 ### Prototype #1:
 ![/dev/pola prototype #1](doc/img/prototype_1.jpg)
+
 More images can be found [here](https://devpola.devlol.org/).
 
 
