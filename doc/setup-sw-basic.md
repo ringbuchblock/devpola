@@ -72,4 +72,76 @@ echo -e "This is a test.\\n\\n\\n" > /dev/serial0
 
 Interested in more? There's a nice [Adafruit tutorial](https://learn.adafruit.com/networked-thermal-printer-using-cups-and-raspberry-pi?view=all).
 
+## Display
+
+In case you use an HDMI display you do not need to install anything further because HDMI connection works out of the box.
+
+GPIO displays, however, need some further installation steps which are depending on the display's model. I'll cover one model which I've used so far.
+
+### Setup Adafruit PiTFT Plus 3.5"
+
+In case you are also using an [Adafruit PiTFT Plus 3.5"](https://www.adafruit.com/product/2441) please follow the steps described [here](https://learn.adafruit.com/running-opengl-based-games-and-emulators-on-adafruit-pitft-displays/rescaling?view=all#pitft-setup) or the summary below.
+
+```bash
+# download a script provided by Adafruit which helps you setting up the display
+$ cd
+$ curl -O https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/pitft-fbcp.sh
+```
+
+```bash
+# run Adafruit's script
+$ sudo bash pitft-fbcp.sh
+
+This script enables basic PiTFT display
+support for portable gaming, etc.  Does
+not cover X11, touchscreen or buttons
+(see adafruit-pitft-helper for those).
+HDMI output is set to PiTFT resolution,
+not all monitors support this, PiTFT
+may be only display after reboot.
+Run time ~5 minutes. Reboot required.
+ 
+CONTINUE? [y/N] y
+ 
+Select project:
+1. PiGRRL 2
+2. Pocket PiGRRL
+3. PiGRRL Zero
+4. Configure options manually
+ 
+SELECT 1-4: 4
+ 
+Select display type:
+1. PiTFT 2.2" HAT
+2. PiTFT / PiTFT Plus resistive 2.4-3.2"
+3. PiTFT / PiTFT Plus 2.8" capacitive
+4. PiTFT / PiTFT Plus 3.5"
+ 
+SELECT 1-4: 4
+ 
+HDMI rotation:
+1. Normal (landscape)
+2. 90° clockwise (portrait)
+3. 180° (landscape)
+4. 90° counterclockwise (portrait)
+ 
+SELECT 1-4: 1
+ 
+TFT (MADCTL) rotation:
+1. 0
+2. 90
+3. 180
+4. 270
+ 
+SELECT 1-4: 4
+ 
+Device: pitft35-resistive
+HDMI framebuffer rotate: 0
+TFT MADCTL rotate: 270
+ 
+CONTINUE? [y/N] y
+```
+
+
+
 [>> Next Step: Deploying /dev/pola](/doc/setup-sw-devpola.md)
