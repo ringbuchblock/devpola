@@ -14,12 +14,14 @@ As I did not only want to take pictures and print them but also provide them in 
 
 
 ### Prototype #1:
-![/dev/pola prototype #1](doc/img/prototype_1.jpg)
+![/dev/pola prototype #1](/doc/img/prototype_1.jpg)
 
 More images can be found [here](https://devpola.devlol.org/).
 
 
 ### Prototype #2:
+
+![/dev/pola prototype #2](/doc/img/prototype_2.jpg)
 
 Currently in work. Updates will follow soon...
 
