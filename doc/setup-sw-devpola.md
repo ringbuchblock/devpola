@@ -94,24 +94,24 @@ sudo apt-get install qrencode
 One possibility to setup an SSH connection is to use an SSH key file.
 
 
-The following will create a new SSH key consisting of two files in directory ```/home/pi/.ssh```:
+We need to create the ssh key for the root user as the service will be running as root. The following will create a new SSH key consisting of two files in directory ```/root/.ssh```:
 * ```devpola-upload```: the private key
 * ```devpola-upload.pub```: the public key
 
 ```bash
 # Make sure that the password stays empty as you do not want to enter the password every time you reboot /dev/pola.
-$ ssh-keygen 
+$ sudo ssh-keygen 
 Generating public/private rsa key pair.
-Enter file in which to save the key (/home/pi/.ssh/id_rsa): /home/pi/.ssh/devpola-upload
+Enter file in which to save the key (/root/.ssh/id_rsa): /root/.ssh/devpola-upload
 Enter passphrase (empty for no passphrase): 
 Enter same passphrase again:
 ```
 
-In order to conveniently use this SSH key you need to add an entry within ```~/.ssh/config```.
+In order to conveniently use this SSH key you need to add an entry within ```/root/.ssh/config```.
 
 The ```HostName``` defines the web server to which you want to upload the photos. The ```IdentityFile``` is the path to the prior created SSH private key.
 ```bash
-# ~/.ssh/config
+# /root/.ssh/config
 Host devpola-upload
 	HostName xxx.xxx.org
 	User devpola
