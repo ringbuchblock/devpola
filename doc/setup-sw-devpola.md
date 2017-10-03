@@ -83,6 +83,12 @@ Each photo is printed along with a caption which is also configurable via ```PHO
 
 /dev/pola offers an additional service for automatically uploading all the photos to a pre-defined web server via SSH. If you want to use this you first need to setup some things.
 
+**Install Software**
+```bash
+# needed for qr code generation
+sudo apt-get install qrencode
+```
+
 **Setup SSH**
 
 One possibility to setup an SSH connection is to use an SSH key file.
