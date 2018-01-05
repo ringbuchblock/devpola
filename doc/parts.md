@@ -8,7 +8,7 @@
   * So far I've used an HDMI display => [Kuman 3.5" HDMI MPI3508](http://www.kumantech.com/kuman-35quot-inch-19201080-full-hd-tft-lcd-display-monitor-for-all-raspberry-pi-system-sc6a_p0394.html) - however this may not be the best choice as there are no holes for screwing it onto the case. You also need an HDMI ribbon cable (in case you go for an HDMI display) [Amazon Example]((https://www.amazon.de/dp/B01E6UKVKS/ref=pe_3044161_185740101_TE_item?language=de_DE)), [Adafruit Examples](https://www.adafruit.com/?q=hdmi%20cable).
   * ... and a GPIO display => [Adafruit PiTFT Plus 3.5"](https://www.adafruit.com/product/2441).
 * **Thermal Printer** (TTL, serial) + Thermal Paper Rolls
-  * I've used [Adafruit's Mini Thermal Receipt Printer](https://www.adafruit.com/product/597) 
+  * I've used [Adafruit's Mini Thermal Receipt Printer](https://www.adafruit.com/product/597) and 58mm (15m) theraml paper rolls
 * **Momentary Push Buttons**
   * eg 16 mm: [Adafruit Examples](https://www.adafruit.com/?q=16%20mm%20momentary%20push%20button&p=1) 
 * **On/Off Switch**
