@@ -35,6 +35,10 @@ Raspbian GNU/Linux 8 \n \l
 \d
 ```
 
+... and the screen like this ...
+
+![/dev/pola welcome screen](/doc/img/welcome.JPG)
+
 
 ## Setup Services
 
