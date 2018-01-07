@@ -49,6 +49,7 @@ $ mkdir -p devpola
 $ cd devpola
 $ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola-config.sh
 $ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola-main.sh
+$ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola-shared.sh
 $ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola-upload.sh
 $ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola.jpg
 ```
