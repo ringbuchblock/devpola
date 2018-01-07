@@ -53,15 +53,3 @@ URI="https://"$URI_SHORT"/"
 UPLOAD_ENABLED=false
 UPLOAD_INTERVAL_SECONDS=10
 UPLOAD_DIR="devpola-upload:" # this equals to /dev/pola's home directory on the server
-
-
-
-function dlog {
-  if $DEBUG; then
-    echo "[DEBUG] "$1
-  fi
-}
-
-function log {
-  echo $1
-}

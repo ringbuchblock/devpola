@@ -20,7 +20,7 @@
 
 # import settings
 source /home/pi/devpola/devpola-config.sh
-
+source /home/pi/devpola/devpola-shared.sh
 
 function photosAvailable {
   if [ -z "$(ls -A $PHOTO_DIR)" ]; then

@@ -20,6 +20,7 @@
 
 # import settings
 source /home/pi/devpola/devpola-config.sh
+source /home/pi/devpola/devpola-shared.sh
 
 # The following is used to generate a proper hash used for the photo filenames. You may not want to change this.
 MAC=$(cat /sys/class/net/eth0/address)
