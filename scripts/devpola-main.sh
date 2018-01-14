@@ -27,7 +27,7 @@ MAC=$(cat /sys/class/net/eth0/address)
 SALT="devpola"$MAC
 
 
-photo_filename=
+photo_upload_name=""
 
 function startPreview {
   # start camera preview as background process
@@ -63,11 +63,13 @@ function stallWhilePrinting {
 
 function takeAndPrintPhoto {
   dlog "calculating new hash..."
-  timestamp=$(date +%s)
-  hash=`echo $timestamp$SALT | md5sum | cut -f1 -d" "`
-  photo_filename=$hash".jpg"
-  photo_full_path=$PHOTO_DIR$photo_filename
-
+  local timestamp=$(date +%s)
+  local hash=`echo $timestamp$SALT | md5sum | cut -f1 -d" "`
+  
+  local photo_filename=$hash".jpg"
+  local photo_full_path=$PHOTO_DIR$photo_filename
+  photo_upload_name=$photo_filename
+  
   dlog "taking photo... "$photo_full_path
   killPreview
   gpio -g write $LED 1
@@ -77,15 +79,28 @@ function takeAndPrintPhoto {
   dlog "sending photo to printer..."
   echo -e $PHOTO_CAPTION"\\n"$(date "+%a %e %b %Y")"\\n" > /dev/serial0
   lp -s $photo_full_path
+  
+  if $UPLOAD_HTML_ENABLED; then
+    dlog "generating photo html..."
+    local photo_html=$hash".html"
+    local photo_full_html=$PHOTO_DIR$photo_html
+    photo_upload_name=$photo_html 
+    
+    local escapedCaption=$(htmlEscape "${PHOTO_CAPTION}")
+    local escapedSubCaption=$(htmlEscape "${subCaption}")
+    $($HOME_DIR"devpola-upload-template.sh" "$escapedCaption" "$escapedSubCaption" "$photo_filename" > $photo_full_html)
+  fi
+  
   stallWhilePrinting
 }
 
 function generateAndPrintQrCode {
   dlog "generating and printing qr code..."
   
-  photo_uri=$URI$photo_filename
-  qr_png=$TMP_DIR"qr.png"
-  qr_jpg=$TMP_DIR"qr.jpg"
+  local photo_uri=$URI$UPLOAD_FOLDER$photo_upload_name
+  photo_upload_name="" #reset
+  local qr_png=$TMP_DIR"qr.png"
+  local qr_jpg=$TMP_DIR"qr.jpg"
   
   # generate qr code and convert to jpg (seems that png can't be printed)
   qrencode $photo_uri -o $qr_png
@@ -125,14 +140,20 @@ function infoButtonPressed {
   echo -e "  1. Press 'shutter' button to \\n     enable live preview (if \\n     not already running).\\n" > /dev/serial0
   echo -e "  2. Press 'shutter' button to \\n     take a picture.\\n\\n" > /dev/serial0
   
-  echo -e "Interested in more? \\nStop by @"$URI_SHORT".\\n" > /dev/serial0
-  echo -e "\\n\\n" > /dev/serial0
+  echo -e "Interested in more? \\nStop by @"$URI_SHORT".\\n\\n\\n" > /dev/serial0
 }
 
 function ipButtonPressed {
   # let's print the current IP
-  echo -e "/dev/pola's IP is "$(hostname -I)"\\n" > /dev/serial0
-  echo -e "\\n\\n" > /dev/serial0
+  local ip;
+  internetConnectionAvailable
+  if [ "$?" -eq "1" ]; then
+    ip="<n/a>"
+  else
+    ip=$(hostname -I)
+  fi
+  
+  echo -e "/dev/pola's IP is "$ip"\\n\\n\\n" > /dev/serial0
 }
 
 function main() {
@@ -159,6 +180,8 @@ function main() {
   done   
 
   log "/dev/pola is ready!"
+
+  enableWifi
 
   # main loop
   while :

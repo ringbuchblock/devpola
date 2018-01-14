@@ -22,6 +22,8 @@
 source /home/pi/devpola/devpola-config.sh
 source /home/pi/devpola/devpola-shared.sh
 
+idleCnt=0
+
 function photosAvailable {
   if [ -z "$(ls -A $PHOTO_DIR)" ]; then
      return 1
@@ -30,20 +32,30 @@ function photosAvailable {
   fi
 }
 
-function internetConnectionAvailable {
-  if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
-    return 0 #true
-  else
-    return 1
-  fi
-}
-
 function uploadPhotos {  
   photosAvailable;
   if [ "$?" -eq "1" ]; then
-    dlog "aborting... no new photos"
+    (( ++idleCnt ))
+    dlog "aborting... no new photos (#"$idleCnt")"
+    
+    
+    if $AUTOMATIC_WIFI_DEACTIVATION; then
+      if [ "$cnt" -eq "$CNT_BEFORE_DEACTIVATING_WIFI" ]; then
+        disableWifi
+      else if [ "$cnt" -gt "$CNT_BEFORE_DEACTIVATING_WIFI" ]; then
+        # reset if wifi was enabled in the meantime
+        wifiConnectionAvailable
+        if [ "$?" -eq "0" ]; then
+          idleCnt=1
+        fi
+      fi
+    fi
+    
     return 0 #abort
   fi
+  
+  idleCnt=0 #reset
+  enableWifi
   
   internetConnectionAvailable;
   if [ "$?" -eq "1" ]; then

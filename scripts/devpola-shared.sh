@@ -27,3 +27,51 @@ function dlog {
 function log {
   echo $1
 }
+
+function htmlEscape {
+  # & gets &amp;
+  # < gets &lt;
+  # > gets &gt;,
+  # " gets &quot;
+  # ' gets &#39;
+  #   gets &nbsp;
+  # \\n gets <br/>
+  echo "$1" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g; s/ /\&nbsp;/g; s:\\n:<br/>:g' 
+}
+
+function internetConnectionAvailable {
+  if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
+    return 0 #true
+  else
+    return 1
+  fi
+}
+
+function wifiConnectionAvailable {
+  if [ $(cat /sys/class/net/wlan0/carrier) -eq "1" ]; then
+    return 0 #true
+  else
+    return 1
+  fi
+}
+
+function disableWifi {
+  dlog "disabling wifi"
+  sudo ifconfig wlan0 down
+  #sudo ifdown wlan0
+}
+
+function enableWifi {
+  dlog "enabling wifi"
+  sudo ifconfig wlan0 up
+  #sudo ifup wlan0
+}
+
+function toggleWifi {
+  wifiConnectionAvailable
+  if [ "$?" -eq "0" ]; then
+    disableWifi
+  else 
+    enableWifi
+  fi
+}

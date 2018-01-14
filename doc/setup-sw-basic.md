@@ -34,7 +34,7 @@ sudo apt-get upgrade
 Type the following command in the shell. If you see a live preview on your screen the camera works properly.
 ```bash
 # show a 1 second live preview and store image as /tmp/test.jpg
-raspistill -f -t 1000 -o /tmp/test.jpg
+raspistill -f -t 3000 -o /tmp/test.jpg
 ```
 
 Interested in more? Visit the the [Raspberry Pi website](https://www.raspberrypi.org/documentation/usage/camera/raspicam/README.md).

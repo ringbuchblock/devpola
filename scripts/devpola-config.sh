@@ -51,5 +51,11 @@ URI="https://"$URI_SHORT"/"
 
 # Settings for automatic photo upload.
 UPLOAD_ENABLED=false
+UPLOAD_HTML_ENABLED=false # set this to true if you rather want to have html embeding your photo than the plain photo link
 UPLOAD_INTERVAL_SECONDS=10
-UPLOAD_DIR="devpola-upload:" # this equals to /dev/pola's home directory on the server
+UPLOAD_FOLDER="event-xy"
+UPLOAD_DIR="devpola-upload:"$UPLOAD_FOLDER # this equals to /dev/pola's home directory on the server using the specified folder
+
+# Automatic WIFI deactivation
+AUTOMATIC_WIFI_DEACTIVATION=false # set this to true in case you want the WIFI to be automatically disabled during a pre-defined time of being idle
+UPLOAD_IDLE_TIMEOUT_CNT_BEFORE_DEACTIVATING_WIFI=30 # * UPLOAD_INTERVAL_SECONDS
