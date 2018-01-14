@@ -93,6 +93,10 @@ Each photo is printed along with a caption which is also configurable via ```PHO
 ```bash
 # needed for qr code generation
 sudo apt-get install qrencode
+
+# test qr code generation and printing
+qrencode "test" /tmp/qr.png
+lp -o scaling=33 /tmp/qr.png
 ```
 
 **Setup SSH**
