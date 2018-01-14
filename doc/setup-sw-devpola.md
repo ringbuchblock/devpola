@@ -51,6 +51,7 @@ $ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola-confi
 $ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola-main.sh
 $ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola-shared.sh
 $ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola-upload.sh
+$ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola-upload-template.sh
 $ wget https://github.com/ringbuchblock/devpola/raw/master/scripts/devpola.jpg
 ```
 
