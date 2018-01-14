@@ -9,15 +9,15 @@ Next, we need to make some general configurations using the [Raspberry Pi config
 sudo raspi-config
 ```
 Mandatory Settings:
-* ```Expand Filesystem```: this ensures that all of the SD card storage is available to the OS
-* ```Enable Camera```: this enables the Raspberry Pi to work with the camera
-* Disable the serial console via ```Advanced Options > Serial```
+* ```Advanced Options > Expand Filesystem```: this ensures that all of the SD card storage is available to the OS
+* ```Interfacing Options > Camera```: enable the Raspberry Pi to work with the camera
+* Disable login shell and enable serial port hardware via ```Interfacing Options > Serial```
 
 Optional Settings:
 * ```Change User Password```
-* ```Internationalisation Options > Change Keyboard Layout```
-* Set hostname via ```Advanced Optons > Hostname```
-* Enable SSH via ```Advanced Options > SSH```
+* ```Localisation Options > Change Keyboard Layout```
+* Set hostname via ```Network Optons > Hostname```
+* Enable SSH via ```Interfacing Options > SSH```
 * Disable overscan via ```Advanced Options > Overscan```
 
 When you're done reboot the system and ensure that the raspberry is connected to the Internet for the following steps.
