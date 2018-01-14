@@ -42,7 +42,7 @@ function uploadPhotos {
     if $AUTOMATIC_WIFI_DEACTIVATION; then
       if [ "$cnt" -eq "$CNT_BEFORE_DEACTIVATING_WIFI" ]; then
         disableWifi
-      else if [ "$cnt" -gt "$CNT_BEFORE_DEACTIVATING_WIFI" ]; then
+      elif [ "$cnt" -gt "$CNT_BEFORE_DEACTIVATING_WIFI" ]; then
         # reset if wifi was enabled in the meantime
         wifiConnectionAvailable
         if [ "$?" -eq "0" ]; then

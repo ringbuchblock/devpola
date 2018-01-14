@@ -53,7 +53,7 @@ URI="https://"$URI_SHORT"/"
 UPLOAD_ENABLED=false
 UPLOAD_HTML_ENABLED=false # set this to true if you rather want to have html embeding your photo than the plain photo link
 UPLOAD_INTERVAL_SECONDS=10
-UPLOAD_FOLDER="event-xy"
+UPLOAD_FOLDER="event-xy/"
 UPLOAD_DIR="devpola-upload:"$UPLOAD_FOLDER # this equals to /dev/pola's home directory on the server using the specified folder
 
 # Automatic WIFI deactivation
