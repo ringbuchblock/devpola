@@ -36,8 +36,6 @@ function uploadPhotos {
   photosAvailable;
   if [ "$?" -eq "1" ]; then
     (( ++idleCnt ))
-    dlog "aborting... no new photos (#"$idleCnt")"
-    
     
     if $AUTOMATIC_WIFI_DEACTIVATION; then
       if [ "$cnt" -eq "$CNT_BEFORE_DEACTIVATING_WIFI" ]; then
@@ -51,6 +49,7 @@ function uploadPhotos {
       fi
     fi
     
+    dlog "aborting... no new photos (#"$idleCnt")"
     return 0 #abort
   fi
   
