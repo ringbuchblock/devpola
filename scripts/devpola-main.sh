@@ -77,7 +77,8 @@ function takeAndPrintPhoto {
   gpio -g write $LED 0
   
   dlog "sending photo to printer..."
-  echo -e $PHOTO_CAPTION"\\n"$(date "+%a %e %b %Y")"\\n" > /dev/serial0
+  local subCaption=$(date "+%a %e %b %Y")
+  echo -e $PHOTO_CAPTION"\\n"$subCaption"\\n" > /dev/serial0
   lp -s $photo_full_path
   
   if $UPLOAD_HTML_ENABLED; then
