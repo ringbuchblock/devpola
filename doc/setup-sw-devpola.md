@@ -126,6 +126,7 @@ Host devpola-upload
 	HostName xxx.xxx.org
 	User devpola
 	IdentityFile ~/.ssh/devpola-upload
+	StrictHostKeyChecking no
 ```
 
 Don't forget to create the user (see ```User```) on the web server and to add the SSH public key to the web server's authorized keys.
