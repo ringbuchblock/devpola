@@ -34,7 +34,8 @@ BAUDRATE=19200
 PREVIEW_TIMEOUT=30000 #milliseconds
 
 # The caption which is printed with every photo
-PHOTO_CAPTION="/dev/lol @Mini Maker Faire Steyr"
+PHOTO_CAPTION="/dev/pola"
+DATE_PLUS_TIME=true
 
 # The directory which contains this script along with the /dev/pola image
 HOME_DIR="/home/pi/devpola/"

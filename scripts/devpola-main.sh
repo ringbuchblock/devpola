@@ -77,7 +77,13 @@ function takeAndPrintPhoto {
   gpio -g write $LED 0
   
   dlog "sending photo to printer..."
-  echo -e $PHOTO_CAPTION"\\n"$(date "+%a %e %b %Y")"\\n" > /dev/serial0
+  local subCaption
+  if $DATE_PLUS_TIME; then 
+    subCaption=$(date)
+  else
+    subCaption=$(date "+%a %e %b %Y")
+  fi
+  echo -e $PHOTO_CAPTION"\\n"$subCaption"\\n" > /dev/serial0
   lp -s $photo_full_path
   
   if $UPLOAD_HTML_ENABLED; then
@@ -107,7 +113,7 @@ function generateAndPrintQrCode {
   convert png:$qr_png jpeg:$qr_jpg
   
   # print qr code
-  echo -e "Find your /dev/pola picture \\n@"$URI_SHORT > /dev/serial0
+  echo -e "Find your /dev/pola picture \\nat "$URI_SHORT":" > /dev/serial0
   lp -s -o scaling=33 -o position=top-right $qr_jpg
   stallWhilePrinting
 }

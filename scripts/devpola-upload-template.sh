@@ -29,22 +29,25 @@ cat << EOF
 
 <head>
   <title>/dev/pola</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" media="screen" href="https://devpola.devlol.org/ext/default.css"/>
 </head>
 
 <body>
-  <h1><a href="https://devpola.devlol.org/" target="_blank">/dev/pola</a></h1>
+  <div id="main">  
+    <h1 id="logo"><a href="https://devpola.devlol.org" target="_blank">/dev/pola</a></h1>
 
-  <div id="photo">
-    <div class="caption">$CAPTION</div>
-    <div class="subcaption">$SUB_CAPTION</div>
-    <a href="$IMG_URL" download>
-      <img class="info" src="$IMG_URL" />
-    </a>
-    <p class="disclaimer">Please note that your photo will be deleted after approximately a month. Thus, please download it if you want to keep it.</p>
-  </div><!-- photo -->
-
-  <div class="info">Wanna build a /dev/pola of your own? Stop by at <a href="https://github.com/ringbuchblock/devpola" target="_blank">github</a>.</div>        
+    <div id="photo">
+      <div class="caption">$CAPTION</div>
+      <div class="subcaption">$SUB_CAPTION</div>
+      <a href="$IMG_URL" download>
+        <img class="info" src="$IMG_URL" />
+      </a>
+      <p class="disclaimer">Please note that your photo will be <strong>deleted</strong> after approximately a month. Thus, <strong>please download</strong> it if you want to keep it.</p>
+    </div><!-- photo -->
+    
+    <div class="info">Wanna build a /dev/pola of your own? Stop by at <a href="https://github.com/ringbuchblock/devpola" target="_blank">github</a>.</div>
+  </div><!--main-->
 </body>
 
 </html>
