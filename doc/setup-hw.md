@@ -18,13 +18,25 @@ Connect the _shutter_ button to the Raspberry PI's GPIO 22, the _info_ button to
 The printer's yellow cable (RX) is connected to the Raspberry Pi's TX (GPIO 14). Do not connect the printer's green wire (TX).
 
 
-![/dev/pola schematic](/schematic/devpola-schematic.jpg)
+### Exemplary Wiring with HDMI display
+
+![/dev/pola schematic](/schematic/devpola-hdmi-schematic.jpg)
 
 **Wiring of Kuman 3.5" HDMI MPI3508 Display**
 
 ![Kuman display](/schematic/kuman_mpi3508.jpg)
 
 
+### Exemplary Wiring with GPIO display
+
+![/dev/pola schematic](/schematic/devpola-gpio-schematic.jpg)
+
+**Wiring of Adafruit PiTFT Plus 3.5" Display**
+
+The display uses both, the 3.3V and the 5V power, one Ground pin and 8 additional data pins. You can pick any of the available Ground pins (the following image shows an arbitrary one). 
+More detailed information about the GPIO pinout can also be found [here](https://pinout.xyz/pinout/pitft_plus_35).
+
+![Adafruit display](/schematic/pitft_plus_3.5.png)
 
 Further information about the GPIO pinout can be directly found at the [raspberry pi website](https://www.raspberrypi.org/documentation/usage/gpio/).
 
