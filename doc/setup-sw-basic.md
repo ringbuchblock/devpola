@@ -142,6 +142,17 @@ TFT MADCTL rotate: 270
 CONTINUE? [y/N] y
 ```
 
+Reboot your pi:
+```bash
+sudo reboot
+```
+
+In case your display still is black try the following and reboot again:
+```bash
+curl -SLs https://apt.adafruit.com/add-pin | sudo bash
+sudo apt-get install adafruit-pitft-helper
+sudo reboot
+```
 
 
 [>> Next Step: Deploying /dev/pola](/doc/setup-sw-devpola.md)
