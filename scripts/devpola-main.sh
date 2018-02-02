@@ -86,18 +86,24 @@ function takeAndPrintPhoto {
   echo -e $PHOTO_CAPTION"\\n"$subCaption"\\n" > /dev/serial0
   lp -s $photo_full_path
   
-  if $UPLOAD_HTML_ENABLED; then
-    dlog "generating photo html..."
-    local photo_html=$hash".html"
-    local photo_full_html=$PHOTO_DIR$photo_html
-    photo_upload_name=$photo_html 
-    
-    local escapedCaption=$(htmlEscape "${PHOTO_CAPTION}")
-    local escapedSubCaption=$(htmlEscape "${subCaption}")
-    $($HOME_DIR"devpola-upload-template.sh" "$escapedCaption" "$escapedSubCaption" "$photo_filename" > $photo_full_html)
+  if $UPLOAD_ENABLED; then
+    if $UPLOAD_HTML_ENABLED; then
+      dlog "generating photo html..."
+      local photo_html=$hash".html"
+      local photo_full_html=$PHOTO_DIR$photo_html
+      photo_upload_name=$photo_html 
+      
+      local escapedCaption=$(htmlEscape "${PHOTO_CAPTION}")
+      local escapedSubCaption=$(htmlEscape "${subCaption}")
+      $($HOME_DIR"devpola-upload-template.sh" "$escapedCaption" "$escapedSubCaption" "$photo_filename" > $photo_full_html)
+    fi
   fi
   
   stallWhilePrinting
+  
+  if ! $UPLOAD_ENABLED; then
+    rm $photo_full_path;
+  fi
 }
 
 function generateAndPrintQrCode {
@@ -159,7 +165,8 @@ function ipButtonPressed {
     ip=$(hostname -I)
   fi
   
-  echo -e "/dev/pola's IP is "$ip"\\n\\n\\n" > /dev/serial0
+  local dateStr=$(date)
+  echo -e "/dev/pola's IP is "$ip"\\n"$dateStr"\\n\\n\\n" > /dev/serial0
 }
 
 function main() {
@@ -202,7 +209,21 @@ function main() {
     
     # check for 'info' button
     if [ $(gpio -g read $INFO) -eq 0 ]; then
-      infoButtonPressed
+        local ipPrinted=false
+        
+        # Must be held for 2+ seconds in order to trigger IP output...
+        starttime=$(date +%s)
+        while [ $(gpio -g read $INFO) -eq 0 ]; do
+          if [ $(($(date +%s)-starttime)) -ge 2 ]; then
+            ipButtonPressed
+            ipPrinted=true
+            sleep 2
+          fi
+        done
+      
+      if ! $ipPrinted; then
+        infoButtonPressed
+      fi
       sleep 1
       # Wait for user to release button before resuming
       while [ $(gpio -g read $INFO) -eq 0 ]; do continue; done
